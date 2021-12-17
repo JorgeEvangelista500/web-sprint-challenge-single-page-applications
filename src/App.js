@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import {Route, Link,} from 'react-router-dom'
 import axios from "axios";
 import * as yup from 'yup';
+import PizzaForm from "./PizzaForm";
 
 const initialFormValues = {
   name: '',
@@ -37,8 +38,8 @@ const App = () => {
       }).catch(err => console.error(err))
       .finally(() => setFormValues(initialFormValues))
   }
-  const inputChange = (evt) => {
-    setFormValues({ ...formValues,[evt.target.name]: evt.target.value})
+  const inputChange = (name, value) => {
+    setFormValues({...formValues, [name]:value})
   }
 
   const formSubmit = (evt) => {
@@ -62,6 +63,16 @@ const App = () => {
         <Link to="/">Help</Link>
       </nav>
     </header>
+    <div>
+        <Link to="/pizza">Pizza?</Link>
+        <Route path="/pizza">
+          <PizzaForm 
+            change={inputChange}
+            values={formValues}
+            submit={formSubmit}
+          />
+        </Route>
+    </div>
     </>
   );
 };

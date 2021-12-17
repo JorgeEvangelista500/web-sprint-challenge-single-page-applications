@@ -14,9 +14,9 @@ const PizzaForm = (props) => {
         submit()
     }
     return(
-        <form>
+        <form id='pizza-form'>
             <label>Name
-                <input
+                <input id='name-input'
                     value={values.name}
                     onChange={onChange}
                     name='name'
@@ -25,7 +25,7 @@ const PizzaForm = (props) => {
                 />
             </label>
             <label>Pizza size
-                <select onChange={onChange} value={values.size} name='size'>
+                <select id='size-dropdown' onChange={onChange} value={values.size} name='size'>
                     <option value=''>- Select an option -</option>
                     <option value='Small'>Small</option>
                     <option value='Medium'>Medium</option>
@@ -100,16 +100,17 @@ const PizzaForm = (props) => {
                     checked={values.spicy_italian_sausage}
                     onChange={onChange}
                 />
-            </label>Special Instructions
-                <input
+            </label>
+            <label>Special Instructions
+                <input id='special-text'
                     value={values.special}
                     onChange={onChange}
                     name='special'
                     type='text'
                     placeholder="Anything else you'd like to add?"
                 />
-            <label>
             </label>
+            <button id='order-button' disabled={disabled}>Order</button>
         </form>
     )
 }

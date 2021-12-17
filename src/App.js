@@ -4,6 +4,7 @@ import axios from "axios";
 import * as yup from 'yup';
 import PizzaForm from "./PizzaForm";
 import schema from './formSchema'
+import './App.css'
 
 const initialFormValues = {
   name: '',
@@ -42,7 +43,7 @@ const App = () => {
   const postNewOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
-        setOrders([ resp.data, ...orders])
+        setOrders([ resp.data.data, ...orders])
       }).catch(err => console.error(err))
       .finally(() => setFormValues(initialFormValues))
   }
@@ -82,6 +83,8 @@ const App = () => {
         <Link to="/">Help</Link>
       </nav>
     </header>
+    <div>
+    </div>
     <div>
         <Link id="order-pizza" to="/pizza">Pizza?</Link>
         <Route path="/pizza">

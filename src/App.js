@@ -30,20 +30,21 @@ const App = () => {
   const [orders, setOrders] = (initialOrders)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
-  const [disabled, setDisable] = useState(initialDisabled)
+  const [disabled, setDisabled] = useState(initialDisabled)
 
   // const getOrders = () => {
   //   axios.get('https://reqres.in/api/orders')
-  //     .then(resp => {
-  //       setOrder(resp.data.data)
-  //     }).catch(err => console.error(err))
+  //     .then(resp => 
+  //       setOrders(resp)
+  //     ).catch(err => console.error(err))
   // }
 
 
   const postNewOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
-        setOrders([ resp.data.data, ...orders])
+        console.log(resp)
+        setOrders([ resp, ...orders])
       }).catch(err => console.error(err))
       .finally(() => setFormValues(initialFormValues))
   }
@@ -68,10 +69,11 @@ const App = () => {
     }
     postNewOrder(newOrder)
   }
+ 
 
-  useEffect(()=>{
-    schema.isValid(formValues).then(valid => setDisable(!valid))
-  }, [formValues])
+  // useEffect(()=>{
+  //   schema.isValid(formValues).then(valid => setDisabled(!valid))
+  // }, [formValues])
 
 
   return (

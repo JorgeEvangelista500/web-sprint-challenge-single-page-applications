@@ -14,7 +14,8 @@ const PizzaForm = (props) => {
         submit()
     }
     return(
-        <form id='pizza-form'>
+        <form id='pizza-form' onSubmit={onSubmit}>
+            <div>{errors.name}</div>
             <label>Name
                 <input id='name-input'
                     value={values.name}

@@ -35,7 +35,7 @@ const App = () => {
   // const getOrders = () => {
   //   axios.get('https://reqres.in/api/orders')
   //     .then(resp => 
-  //       setOrders(resp)
+  //       setOrders(resp.testOrder)
   //     ).catch(err => console.error(err))
   // }
 
@@ -44,7 +44,7 @@ const App = () => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
         console.log(resp)
-        setOrders([ resp, ...orders])
+        setOrders([ resp.testOrder, ...orders])
       }).catch(err => console.error(err))
       .finally(() => setFormValues(initialFormValues))
   }
@@ -70,10 +70,9 @@ const App = () => {
     postNewOrder(newOrder)
   }
  
-
-  // useEffect(()=>{
-  //   schema.isValid(formValues).then(valid => setDisabled(!valid))
-  // }, [formValues])
+  useEffect(()=>{
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  }, [formValues])
 
 
   return (
